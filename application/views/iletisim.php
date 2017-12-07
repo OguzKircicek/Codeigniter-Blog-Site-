@@ -1,4 +1,10 @@
-<?php $this->load->view('_header'); ?>
+<?php
+$query=$this->db->query("SELECT * FROM siteayarlari limit 1 ");
+$kaynak['etiket']=$query->result();
+
+
+
+$this->load->view('_header',$kaynak); ?>
 
     <!-- Main Content -->
     <div class="container">
@@ -6,25 +12,29 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <?php if ( $this->session->flashdata("bilgi")) { ?>
 
-
+          <h2> İLETİŞİM </h2>
         <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert">×</button>
             <strong>İşlem: </strong><?=  $this->session->flashdata("bilgi")?>
         </div>
       <?php  } ?>
           <p> Her Türlü bilgi ve sorularınız için mesaj gönderebilirsiniz</p>
-          <form method="post" action="<?=base_url()?>home/mesajgonder">
+
+
+          <form method="post" action="<?=base_url()?>iletisim/mesajgonder">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls">
-                <label>Ad-Soyad</label>
-                <input type="text" class="form-control" name="ad" placeholder="İsim-Soyisim" required data-validation-required-message="Please enter your name.">
+
+
+
+                <input type="text" class="form-control" name="ad" placeholder="İsim-Soyisim" >
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <div class="control-group">
               <div class="form-group floating-label-form-group controls">
                 <label>Email </label>
-                <input type="email" class="form-control" name="email" placeholder="Email"  required data-validation-required-message="Please enter your email address.">
+                <input type="email" class="form-control" name="email" placeholder="Email"  required >
                 <p class="help-block text-danger"></p>
               </div>
             </div>
@@ -32,12 +42,12 @@
             <div class="control-group">
               <div class="form-group floating-label-form-group controls">
                 <label>Mesajınız</label>
-                <textarea rows="5" class="form-control" name="mesaj" placeholder="Mesaj"  required data-validation-required-message="Please enter a message."></textarea>
+                <textarea rows="5" class="form-control" name="mesaj" placeholder="Mesaj"  required ></textarea>
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <br>
-            <div id="success"></div>
+
             <div class="form-group">
               <button type="submit" class="btn btn-primary" name="gonder" >Gönder</button>
             </div>

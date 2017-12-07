@@ -33,7 +33,7 @@
 <a class="btn btn-success" href="<?=base_url()?>admin/Kullanicilar/ekle"><i class="glyphicon glyphicon-user"></i> Yeni Kullanıcı Ekle </a>
 
 <div class="row">
-    <div class="box col-md-12">
+    <div class="col-md-10 ">
         <div class="box-inner">
             <div class="box-header well">
                 <h2><i class="glyphicon glyphicon-info-sign"></i> Kullanıcılar</h2>
@@ -42,7 +42,7 @@
             </div>
 
             <div class="box-content row">
-                <div class="col-lg-7 col-md-12">
+                <div class=" col-md-10">
 
 
                    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
@@ -57,11 +57,15 @@
     </thead>
     <tbody>
 	<?php
+  $sayac=1;
+  $a=array("success","info","warning","danger");
 	foreach($veri as $rs)
 	{
 
 	?>
-    <tr>
+  <tr class="<?php $random=array_rand($a,1);
+  echo $a[$random];
+  ?>">
         <td><?=$rs->adi  ?></td>
         <td class="center"><?=$rs->email  ?></td>
         <td class="center"><?=$rs->yetki  ?></td>
@@ -76,7 +80,7 @@
             <a class="btn btn-info" href="<?=base_url()?>admin/Kullanicilar/edit/<?=$rs->id?>">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
-            </a>
+            </a><br>
             <a class="btn btn-danger" href="<?=base_url()?>admin/Kullanicilar/delete/<?=$rs->id?>"  onclick="return confirm ('Deleting... Are You Sure ?');" >
                 <i class="glyphicon glyphicon-trash icon-white"></i>
                 Delete
@@ -90,22 +94,7 @@
     </tbody>
     </table>
 
-	<ul class="pagination pagination-centered">
-                        <li><a href="#">Prev</a></li>
-                        <li class="active">
-                            <a href="#">1</a>
-                        </li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">Next</a></li>
-                    </ul>
 
-
-                </div>
-
-
-            </div>
 
           <?php } else {
             ?>

@@ -29,7 +29,7 @@
   <strong>Transaction: </strong><?=  $this->session->flashdata("sonuc")?>
 </div>
 <?php  } ?>
-<a class="btn btn-success" href="<?=base_url()?>admin/yazilar/ekle"><i class="glyphicon glyphicon-user"></i> Yeni Yazı Ekle </a>
+<a class="btn btn-success" href="<?=base_url()?>admin/yazilar/ekle"><i class="glyphicon glyphicon-pencil"></i> Yeni Yazı Ekle </a>
 
 
 
@@ -61,8 +61,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($veri as $rs ) { ?>
-                      <tr>
+                    <?php
+                    $sayac=1;
+                    $a=array("success","info","warning","danger");
+
+
+                    foreach ($veri as $rs ) { ?>
+                      <tr class="<?php $random=array_rand($a,1);
+                      echo $a[$random];
+                      ?>">
+
                           <td><?=$rs->adi?></td>
                           <td><textarea rows="2" cols="30" readonly><?=$rs->baslik?>
                           </textarea></td>
@@ -81,8 +89,10 @@
                 </table>
             </div>
         </div>
+
     </div>
     <!--/span-->
+
 
 </div><!--/row-->
 
@@ -93,6 +103,10 @@
         </div>
 
 <?php } ?>
+<div class="pagination">
+   <?= $linkler ?>
+</div>
+
 
 
 </div><!--/#content.col-md-0-->

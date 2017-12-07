@@ -20,6 +20,7 @@ class Kullanicilar extends CI_Controller {
 		$data["veri"]=$query->result();
 
 
+
 		$this->load->view('admin/a_header');
 		$this->load->view('admin/a_sidebar');
 		$this->load->view('admin/kullanicilar_listesi',$data);
@@ -62,7 +63,7 @@ class Kullanicilar extends CI_Controller {
   {
  $this->load->view('admin/kullanici_ekle');
   }
- 
+
   public function Addsave()
   {
    $data=array
@@ -87,6 +88,12 @@ class Kullanicilar extends CI_Controller {
    $data["veri"]=$transaction->result();
    $this->load->view("admin/kullanici_goster",$data);
 
+  }
+  public function adminler ()
+  {
+    $islem=$this->db->query("SELECT * from users where yetki='Admin'");
+    $data['admin']=$islem->result();
+    $this->load->view('admin/a_adminler',$data);
   }
 
 }

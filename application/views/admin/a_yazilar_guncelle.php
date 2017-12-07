@@ -51,8 +51,8 @@ $this->load->view('admin/a_sidebar');
                         <input  type="text" class="form-control" width="60" name="baslik" value="<?=$veri[0]->baslik?>" >
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Yazı Linki</label>
-                        <input  type="text" class="form-control" width="60" name="link" id="exampleInputEmail1" placeholder="Başlık">
+                        <label for="exampleInputEmail1">Konu</label>
+                        <input  type="text" class="form-control" width="60" name="konu" id="exampleInputEmail1" placeholder="Konu">
                     </div>
                     <script src="<?=base_url()?>ckeditor/ckeditor.js"></script>
                     <textarea name="yazi" id="yazi" rows="10" cols="121"><?=$veri[0]->yazi?>

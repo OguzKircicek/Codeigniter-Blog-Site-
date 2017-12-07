@@ -48,8 +48,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-        
-            <a class="navbar-brand" href="<?=base_url () ?>admin/home">  <img alt="Yönetim Paneli" src="" class="hidden-xs"/>
+
+            <a class="navbar-brand" href="<?=base_url () ?>admin/home">  Yönetim Paneli 
                 <span></span></a>
 
             <!-- user dropdown starts -->

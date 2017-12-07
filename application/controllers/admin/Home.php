@@ -16,6 +16,12 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+
+    $ad=$this->session->users['adi'];
+    $sorgu=$this->db->query("SELECT * from yazilar where adi='$ad' ORDER BY Id desc ");
+    $data["icerik"]=$sorgu->result();
+
+
     $query=$this->db->query("SELECT count(id) as say FROM users");
     $data["count"]=$query->result();
     $sor=$this->db->query("SELECT count(id) as sayac FROM users WHERE yetki = 'Admin'");
@@ -37,9 +43,16 @@ class Home extends CI_Controller {
     $query=$this->db->query("Select * from users where id='$id' ");
 		$data["veri"]=$query->result();
 
+    $ad=$this->session->users['adi'];
+    $sorgu=$this->db->query("SELECT * from yazilar where adi='$ad' " );
+    $data["yazi"]=$sorgu->result();
     $this->load->view('admin/ayarlar',$data);
-  }
 
+
+
+
+  }
+//kanka aslında yazıları çektim ama 2 defa geliyor bak şim sal bana çağır şimdi veri diye nerde veri diye çağırıyım yazi ça
   public function ayarguncelle($id)
   {
     $data=array
@@ -54,5 +67,24 @@ class Home extends CI_Controller {
    $this->Database_Model->update_data("users",$data,$id);
    redirect(base_url().'admin/Home/ayarlar');
   }
+ public function siteiciayarlar()
+ {
+   $site=$this->db->query("SELECT * FROM siteayarlari limit 1 ");
+   $data["siteici"]=$site->result();
+   $this->load->view('admin/siteiciayarlar',$data);
+ }
+ public function siteiciayarguncelle($id)
+ {
+   $data=array
+   (
 
+   'keywords'=>$this->input->post('keywords'),
+   'aciklama'=>$this->input->post('aciklama'),
+   'name'=>$this->input->post("name"),
+
+   );
+  $this->session->set_flashdata("sonuc","Successfully User Updated");
+  $this->Database_Model->update_data("siteayarlari",$data,$id);
+  redirect(base_url().'admin/Home/siteiciayarlar');
+ }
 }

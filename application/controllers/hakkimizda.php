@@ -17,6 +17,9 @@ class hakkimizda extends CI_Controller {
      { $id=1;
        $transaction=$this->db->query("SELECT * FROM hakkimda WHERE id=$id" );
        $data['veri']=$transaction->result();
+       $data['veri'][0]->baslik = "Hakkımızda";
        $this->load->view('hakkimizda',$data);
+
+       
      }
 }

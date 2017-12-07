@@ -1,4 +1,10 @@
-﻿<?php $this->load->view('_header'); ?>
+<?php
+$query=$this->db->query("SELECT * FROM siteayarlari limit 1 ");
+$kaynak['etiket']=$query->result();
+
+
+
+$this->load->view('_header',$kaynak); ?>
 
     <!-- Main Content -->
     <div class="container">

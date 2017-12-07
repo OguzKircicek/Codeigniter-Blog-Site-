@@ -44,16 +44,17 @@ $this->load->view('admin/a_sidebar');
                 <form role="form" method="post" action="<?=base_url()?>admin/yazilar/Addsave">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Adınız Soyadınız</label>
-                        <input  type="text" class="form-control" width="60" name="adi" id="exampleInputEmail1" placeholder="Ad Soyad">
+                        <input  type="text" class="form-control" value="<?=$this->session->users['adi'];?>" width="60" name="adi" id="exampleInputEmail1" placeholder="Ad Soyad">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Başlık</label>
                         <input  type="text" class="form-control" width="60" name="baslik" id="exampleInputEmail1" placeholder="Başlık">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Yazı Linki</label>
-                        <input  type="text" class="form-control" width="60" name="link" id="exampleInputEmail1" placeholder="Başlık">
+                        <label for="exampleInputEmail1">Konu</label>
+                        <input  type="text" class="form-control" width="60" name="konu" id="exampleInputEmail1" placeholder="Konu">
                     </div>
+
                     <script src="<?=base_url()?>ckeditor/ckeditor.js"></script>
                     <textarea name="yazi" id="yazi" rows="10" cols="121">
                     </textarea>

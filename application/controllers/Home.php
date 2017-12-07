@@ -16,6 +16,13 @@ class Home extends CI_Controller {
 	public function index()
 	   {
 
+
+    $trans=$this->db->query("SELECT * FROM slider ");
+    $kaynak["slider"]=$trans->result();
+
+
+
+
     $veri=$this->Database_Model->yazisayisi(); //pagination
     $config= array( //pagination işlemleri yapılıyor
                 "base_url"=>base_url()."Home",
@@ -45,43 +52,69 @@ class Home extends CI_Controller {
 
     $this->pagination->initialize($config);
     $kaynak["linkler"]=$this->pagination->create_links();
-    $kaynak['veri']=$this->Database_Model->yazicek($config["per_page"],$this->uri->segment(2,0));
+    $kaynak['veriler']=$this->Database_Model->yazicek($config["per_page"],$this->uri->segment(2,0));
+
+
+    $query=$this->db->query("SELECT * FROM siteayarlari limit 1 ");
+    $kaynak['etiket']=$query->result();
     $this->load->view('_anasayfa',$kaynak);
+
+
 	   }
 
 
   public function yazilar($id) //Yazılar anasayfaya çekilip açılıyor.
      {
-    $transaction=$this->db->query("SELECT * FROM yazilar WHERE id=$id" );
+
+
+    $transaction=$this->db->query("SELECT * FROM yazilar WHERE id='$id' " );
     $data['veri']=$transaction->result();
+    $yorumlar=$this->db->query("SELECT * FROM yorumlar ");
+    $data['yorum']=$yorumlar->result();
     $this->load->view('yazilar',$data);
      }
+  public function ara($search)
+  {
 
+    $keyword=$this->input->post($search);
+    $data["arama"]=$this->Database_Model->search($keyword);
+    $this->load->view('sonuc',$data);
 
-
-    public function iletisim() //iletişim sayfası controllur fonksiyonu
-     {
-        $this->load->view("iletisim");
-
-     }
-    public function mesajgonder()
-    {
-      $data=array(
-
-      'gonderenadi'=>$this->input->post('ad'),
-      'mesajmail'=>$this->input->post('email'),
-      'mesajaciklama'=>$this->input->post('mesaj'),
-      'mesajtarihi'=>date('d-m-y')
-
-    );
-//
-   $this->Database_Model->mesajgonder("mesajlar",$data);
-
-  $this->session->set_flashdata("bilgi","<h2>Mesajınız Tarafımıza İletilmiştir.Teşekkürler.</h2>");
-  redirect("home/iletisim");// oraya tekrara gelsin diye yaptım
 
 
   }
+  public function yorumlar($id)
+    {
+      {
+    $query=$this->db->query ("select id from yazilar where id=$id");
+    $data=$query->result();
+     if($this->session->users)
+     {
+       $data=array(
+        "kullanici"=>$this->input->post("ad"),
+     		"email"=>$this->session->users['email'],
+     		"metin"=>$this->input->post("mesaj"),
+     		"yazi_id"=>$data[0]->id
+
+
+
+      );
+      $this->db->insert("yorumlar",$data);
+      redirect(base_url()."Home/yazilar/$id");
+     }
+     $data=array(
+  		"kullanici"=>$this->input->post("ad"),
+  		"email"=>$this->input->post("email"),
+  		"metin"=>$this->input->post("mesaj"),
+  		"yazi_id"=>$data[0]->id
+  		);
+  		$this->db->insert("yorumlar",$data);
+  		redirect(base_url()."Home/yazilar/$id");
+  	}
+
+    }
+
+
 
 
  }

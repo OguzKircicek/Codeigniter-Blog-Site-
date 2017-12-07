@@ -12,6 +12,7 @@
 
             </div>
 						<?php foreach ($onay as $rs) {
+
 							if($rs->onay == 0) {
 							?>
 
@@ -41,9 +42,9 @@
 
 
 
-                  <td><a href="<?=base_url()?>admin/yazilar/onayon/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-info" >
+                  <td><a href="<?=base_url()?>admin/yazilar/onayyon/<?= $rs->Id?>" style="margin-top:8px" class="btn btn-info" >
                      <span class="glyphicon glyphicon-check"></span></a></td>
-                     <td><a href="<?=base_url()?>admin/yazilar/onay_ret/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-info" >
+                  <td><a href="<?=base_url()?>admin/yazilar/onayy_ret/<?= $rs->Id?>" style="margin-top:8px" class="btn btn-info" >
                         <span class="glyphicon glyphicon-check"></span></a></td>
 											</tr>
                     </tbody>

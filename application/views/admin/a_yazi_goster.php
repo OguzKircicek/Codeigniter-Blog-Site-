@@ -53,8 +53,8 @@ $this->load->view('admin/a_sidebar');
                         <input  type="text" class="form-control" width="60" value="<?=$veri[0]->baslik ?>" name="baslik" id="exampleInputEmail1" placeholder="Başlık">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Yazı Linki</label>
-                        <input  type="text" class="form-control" width="60" name="link" value="<?=$veri[0]->link ?>"  id="exampleInputEmail1" placeholder="Başlık">
+                        <label for="exampleInputEmail1">Konu</label>
+                        <input  type="text" class="form-control" width="60" name="link" value="<?=$veri[0]->konu ?>"  id="exampleInputEmail1" placeholder="Başlık">
                     </div>
                     <textarea name="yazi" rows="10" cols="121" readonly><?=$veri[0]->yazi?>
                     </textarea>
@@ -65,9 +65,14 @@ $this->load->view('admin/a_sidebar');
                 </form>
 
             </div>
-          <?php } ?>
-        <?php else
-                 echo "Yazıları görüntüleyemezsiniz sadece Yazı Ekleyebilirsiniz"; ?>
+
+                      <?php } else {
+                        ?>
+                        <div class="alert alert-info">
+                                   <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                 <strong><b>Üye olduğunuz için Bu Alanı Görüntülüyemezsiniz!!<b></strong>
+                       </div>
+              <?php } ?>
         </div>
     </div>
     <!--/span-->

@@ -25,6 +25,7 @@
                                       <th>#</th>
                                       <th>Ad-Soyad</th>
                                       <th>Mesaj</th>
+                                      <th>Mail</th>
                                       <th>Tarih</th>
                                       <th>Mesaj Sil</th>
                                   </tr>
@@ -46,7 +47,7 @@
                                       <td><?= $rs->gonderenadi ?></td>
                                       <td> <textarea name="aciklama" rows="3" cols="40"><?= $rs->mesajaciklama ?>
                                       </textarea></td>
-
+                                        <td><?= $rs->mesajmail ?></td>
                                       <td><?= $rs->mesajtarihi ?></td>
                                       <td><a href="<?=base_url()?>admin/mesajlar/mesajsil/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-danger">
                                   <span class="glyphicon glyphicon-remove"></span></a></a></td>

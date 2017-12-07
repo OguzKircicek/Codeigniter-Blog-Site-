@@ -51,7 +51,7 @@ class Database_Model extends CI_Model {
   {
    $result=$this->db->select("*")
    ->from ('yazilar')
-   ->order_by ('id',"DESC")
+   ->order_by ('Id',"DESC")
    ->limit($per,$segment)
    ->get()
    ->result();
@@ -89,6 +89,33 @@ class Database_Model extends CI_Model {
     return $result;
 
   }
+  public function retsil($tablo,$id)
+  {
+    $result=$this->db->delete($tablo,array('Id'=>$id));
+    return $result;
+
+  }
+  public function onayla($tablo,$data,$id)
+	{
+		$this->db->where('Id',$id);
+		$this->db->update($tablo,$data);
+
+		return true;
+	}
 
 
+  public function search ($tablo,$data)
+  {
+    $this->db->select('*');
+    $this->db->from($tablo);
+    $this->db->like('baslik',$data);
+    $query = $this->db->get();
+    return $query->result();
+  }
+  public function yorumsil($id)
+  {
+    $result=$this->db->delete('yorumlar',array('Id'=>$id));
+    return $result;
+
+  }
 }
