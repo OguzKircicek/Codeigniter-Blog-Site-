@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>Admin</title>
+    <title>Yönetim Paneli</title>
 
 
     <!-- The styles -->
@@ -23,6 +23,8 @@
     <link href='<?=base_url () ?>temp/assets/admin/css/jquery.iphone.toggle.css' rel='stylesheet'>
     <link href='<?=base_url () ?>temp/assets/admin/css/uploadify.css' rel='stylesheet'>
     <link href='<?=base_url () ?>temp/assets/admin/css/animate.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
 
     <!-- jQuery -->
     <script src="<?=base_url () ?>temp/assets/admin/bower_components/jquery/jquery.min.js"></script>
@@ -49,7 +51,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="<?=base_url () ?>admin/home">  Yönetim Paneli 
+            <a class="navbar-brand" href="<?=base_url () ?>admin/home">  Yönetim Paneli
                 <span></span></a>
 
             <!-- user dropdown starts -->

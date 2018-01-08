@@ -1,8 +1,8 @@
-
 <?php $this->load->view('admin/a_header'); ?>
 <?php $this->load->view('admin/a_sidebar'); ?>
-<div class="row" >
-  <div class="col-lg-9">
+
+
+  <div class="col-md-9">
     <?php if ( $this->session->flashdata("sonuc")) { ?>
 
 
@@ -13,13 +13,13 @@
     <?php  } ?>
               <div class="panel panel-default">
                   <div class="panel-heading">
-                  Gelen Mesajlar
+                Gelen Mesajlar
                   </div>
                 <?php if($this->session->users['yetki']=='Admin') { ?>
                   <div class="panel-body">
                       <div class="table-responsive">
 
-                          <table class="table" action="<?=base_url()?>admin/mesajlar">
+                          <table class="table" action="<?=base_url()?>admin/Mesajlar">
                               <thead>
                                   <tr>
                                       <th>#</th>
@@ -49,7 +49,7 @@
                                       </textarea></td>
                                         <td><?= $rs->mesajmail ?></td>
                                       <td><?= $rs->mesajtarihi ?></td>
-                                      <td><a href="<?=base_url()?>admin/mesajlar/mesajsil/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-danger">
+                                      <td><a href="<?=base_url()?>admin/Mesajlar/mesajsil/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-danger">
                                   <span class="glyphicon glyphicon-remove"></span></a></a></td>
                                   </tr>
                                      <?php } ?>
@@ -69,7 +69,5 @@
     <?php } ?>
               <!-- /.panel -->
           </div>
-          <!-- /.col-lg-6 -->
 
-    </div><!--/row-->
 <?php $this->load->view('admin/a_footer'); ?>

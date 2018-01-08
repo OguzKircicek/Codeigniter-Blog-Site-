@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class hakkimizda extends CI_Controller {
+class Hakkimizda extends CI_Controller {
     public function __construct ()
 	{
 		parent::__construct();
@@ -38,6 +38,6 @@ class hakkimizda extends CI_Controller {
     );
    $this->session->set_flashdata("sonuc","Successfully User Updated");
    $this->Database_Model->update_data("hakkimda",$data,$id);
-   redirect(base_url().'admin/hakkimizda');
+   redirect(base_url().'admin/Hakkimizda');
   }
 }

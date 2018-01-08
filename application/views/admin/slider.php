@@ -20,8 +20,18 @@
   <button type="button" class="close" data-dismiss="alert">×</button>
   <strong>Transaction: </strong><?=  $this->session->flashdata("sonuc")?>
 </div>
-<?php  } ?>
+<?php  }
+if($this->session->users['durum']=='Aktif')  { ?>
+
 <a class="btn btn-success" href="<?=base_url()?>admin/slider/ekle"><i class="glyphicon glyphicon-picture"></i> Yeni Ekle </a>
+<?php }  else  { ?>
+ <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>Yönetici Tarafından Durumunuz Aktif yapıldıktan sonra Slider Ekleyebileceksiniz </strong>
+</div>
+
+<?php }?>
+
 
 
 
@@ -48,7 +58,7 @@
 
 
 
-                        <th width="10px">Silme</th>
+                        <th width="10px"></th>
 
                     </tr>
                     </thead>
@@ -56,6 +66,8 @@
                     <?php foreach ($veri as $rs ) { ?>
                       <tr>
                           <td><img width="200" height="200"src="<?=base_url()?>uploads/<?=$rs->yolu?>"></td>
+                          <td><?=$rs->baslik?></td>
+                          <td><textarea rows="5" column="100"><?=$rs->bilgi?></textarea></td>
                           <td><?=$rs->tarih?></td>
 
                     <td><a href="<?=base_url()?>admin/slider/slider_sil/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-danger">
@@ -74,7 +86,7 @@
 <?php } else    {   ?>
          <div class="alert alert-info">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  <strong>Üye olduğunuz için Sadece Yazı ekleyebilirsiniz Yazıları Görüntülüyemezsiniz!!</strong>
+                  <strong>Üye olduğunuz için Bu alanı görüntüleyemezsiniz... </strong>
         </div>
 
 <?php } ?>

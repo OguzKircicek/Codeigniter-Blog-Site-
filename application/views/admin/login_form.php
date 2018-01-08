@@ -16,7 +16,7 @@
         ===
     -->
     <meta charset="utf-8">
-    <title>Free HTML5 Bootstrap Admin Template</title>
+    <title>Login Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
     <meta name="author" content="Muhammad Usman">
@@ -65,10 +65,18 @@
 
     <div class="row">
         <div class="well col-md-5 center login-box">
+           <?php if( $this->session->flashdata("bilgi")) { ?>
+             <div class="alert alert-info">
+                   <button type="button" class="close" data-dismiss="alert">×</button>
+
+                     <strong> <?= $this->session->flashdata("bilgi") ?></strong>
+               </div>
+            <?php } ?>
        <?php if( $this->session->flashdata("mesaj")) { ?>
           <div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert">×</button>
                 <strong> <?= $this->session->flashdata("mesaj") ?></strong>
+                  <strong> <?= $this->session->flashdata("bilgi") ?></strong>
             </div>
         <?php }  ?>
             <div class="alert alert-info">
@@ -105,8 +113,12 @@
                 </fieldset>
             </form>
             <p class="center col-md-5">
+              <a href="<?=base_url()?>admin/Sifremiunuttum">  <button type="submit" class="btn btn-primary"> Şifremi Unuttum</button></a>
+            </p>
+            <p class="center col-md-5">
               <a href="<?=base_url()?>admin/kayitol">  <button type="submit" class="btn btn-primary"> Kayıt Ol</button></a>
             </p>
+
         </div>
         <!--/span-->
     </div><!--/row-->

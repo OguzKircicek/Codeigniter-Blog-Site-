@@ -1,3 +1,27 @@
+<?php
+
+if(!empty($veri))
+{
+  $title=$veri[0]->baslik;
+  $keywords=$veri[0]->keywords;
+  $description="Yazi,Blog Yazısı";
+}
+elseif(!empty($etiket))
+{
+  $title=$etiket[0]->name;
+  $keywords=$etiket[0]->keywords;
+  $description=$etiket[0]->aciklama;
+}
+else
+{
+  $title=$etiket[0]->name;
+  $keywords=$etiket[0]->keywords;
+  $description=$etiket[0]->aciklama;
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,13 +29,13 @@
 
     <meta charset="utf-8">
 
-    <meta name="description" content="<?= $etiket[0]->aciklama ?>">
+    <meta name="description" content="<?=$description ?>">
 
-    <meta name=”keywords” content="<?= $etiket[0]->keywords?>">
+    <meta name=”keywords” content="<?=$keywords ?>">
 
 
 
-    <title><?= $etiket[0]->name ?></title>
+    <title><?=$title ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?=base_url()?>temp/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +49,11 @@
     <link href="<?=base_url()?>temp/assets/css/clean-blog.min.css" rel="stylesheet">
 
       <link href="<?=base_url()?>temp/assets/css/galeri.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+        <link href="<?=base_url()?>temp/assets/css/hover.css" rel="stylesheet">
       <link href="<?=base_url()?>temp/assets/css/yorum.css" rel="stylesheet" type="text/css">
+      <link href="<?=base_url()?>temp/assets/css/404.css" rel="stylesheet" type="text/css">
       <link href="<?=base_url()?>temp/assets/vendor/bootstrap/css/bootstrap.css">
       <link href="<?=base_url()?>temp/assets/vendor/bootstrap/css/bootstrap.min.css">
       <link href="<?=base_url()?>temp/assets/vendor/bootstrap/js/bootstrap.js">
@@ -67,29 +95,64 @@
             <li class="nav-item">
               <a class="nav-link" href="<?php echo base_url('iletisim/iletisim');?>">İletişim</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('fotogaleri');?>">Foto Galeri</a>
-            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="<?php echo base_url('cvm');?>">CV'M</a>
             </li>
             <?php if($this->session->users) { ?>
               <li class="nav-item">
-                <a class="nav-link" href="<?=base_url()?>admin/login/logout">Çıkış</a>
+
+
               </li>
             <?php }
             else { ?>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo base_url('admin/login');?>">Giriş Yap veya Kayıt Ol</a>
             </li>
+
           <?php } ?>
+
           </ul>
+          <?php if($this->session->users['yetki']=="Admin") { ?>
+          <ull>
+          <liv class="menu"><a href="#" ><b><?=$this->session->users['adi']?></b></a>
+            <div class="acilir-menu">
+              <a href="<?=base_url()?>admin/Home/">Yönetim Paneline Geç</a>
+              <a href="<?=base_url () ?>admin/Home">Yazılarım</a>
+              <a href="<?=base_url()?>admin/Yazilarr/ekle">Yazı Ekle</a>
+
+              <a href="<?=base_url()?>admin/Home/ayarlar">Ayarlarım</a>
+              <a href="<?=base_url()?>admin/login/logout">Çıkış</a>
+            </div>
+          </liv>
+        </ull>
+      <?php }
+      else {} ?>
+      <?php if($this->session->users['yetki']=="Üye") { ?>
+      <ull>
+      <liv class="menu"><a href="#" ><b><?=$this->session->users['adi']?></b></a>
+        <div class="acilir-menu">
+
+          <a href="<?=base_url () ?>Yazi_uye">Yazılarım</a>
+          <a href="<?=base_url()?>Yazi_uye/ekle">Yazı Ekle</a>
+            <a href="<?=base_url()?>Mesajlar">Mesajlarım</a>
+              <a href="<?=base_url()?>Yorumlarim">Yorumlarım</a>
+          <a href="<?=base_url()?>Ayarlar/ayarlar">Ayarlarım</a>
+          <a href="<?=base_url()?>admin/login/logout">Çıkış</a>
+        </div>
+      </liv>
+    </ull>
+  <?php }
+  else {} ?>
+
         </div>
       </div>
+
     </nav>
+
     <?php if(isset($veri[0]->baslik)) { ?>
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('<?=base_url()?>temp/assets/img/1.jpg')">
+    <header  class="masthead" style="background-image: url('<?=base_url()?>temp/assets/img/1.jpg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -115,7 +178,7 @@
                          foreach ($slider as $rs ){
                            $a++; ?>
                         <div style="height:300px;"class="item <?php if($a==1) {?> active <?php } ?>">
-                            <img src="<?=base_url()?>uploads/<?=$rs->yolu ?>" alt="">
+                          <a href="<?=base_url()?>Slider/bilgi/<?=$rs->Id?>"><img  src="<?=base_url()?>uploads/<?=$rs->yolu ?>" alt=""></a>
                             <div class="carousel-caption">
 
                             </div>
@@ -134,4 +197,4 @@
 
 
 
-<?php } ?><br>
+<?php } ?>

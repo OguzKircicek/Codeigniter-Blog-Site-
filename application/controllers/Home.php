@@ -15,10 +15,11 @@ class Home extends CI_Controller {
 //  $this->Database_Model->update_data("users",$data,$id);
 	public function index()
 	   {
+       $transaction=$this->db->query("SELECT * FROM kategoriler" );
+       $kaynak['a']=$transaction->result();
 
-
-    $trans=$this->db->query("SELECT * FROM slider ");
-    $kaynak["slider"]=$trans->result();
+      $trans=$this->db->query("SELECT * FROM slider ");
+      $kaynak["slider"]=$trans->result();
 
 
 
@@ -26,7 +27,7 @@ class Home extends CI_Controller {
     $veri=$this->Database_Model->yazisayisi(); //pagination
     $config= array( //pagination işlemleri yapılıyor
                 "base_url"=>base_url()."Home",
-                "per_page"=>4,
+                "per_page"=>5,
                 "total_rows"=>$veri
 
 // pagination işlemleri configde yapılır.
@@ -41,6 +42,7 @@ class Home extends CI_Controller {
         $config['prev_tag_open'] = '<li class="prev"> ';  //buradaki ayarlar sayfalama linki
         $config['prev_tag_close'] = '</li>';             //görünüm ayarları
         $config['next_link'] = '&raquo';
+
         $config['next_tag_open'] = '<li>';
         $config['next_tag_close'] = '</li>';
         $config['last_tag_open'] = '<li>';
@@ -60,19 +62,30 @@ class Home extends CI_Controller {
     $this->load->view('_anasayfa',$kaynak);
 
 
+
 	   }
 
 
   public function yazilar($id) //Yazılar anasayfaya çekilip açılıyor.
      {
 
-
+    $transaction=$this->db->query("SELECT * FROM kategoriler" );
+    $data['a']=$transaction->result();
     $transaction=$this->db->query("SELECT * FROM yazilar WHERE id='$id' " );
     $data['veri']=$transaction->result();
     $yorumlar=$this->db->query("SELECT * FROM yorumlar ");
     $data['yorum']=$yorumlar->result();
+    $islem=$this->db->query("SELECT * FROM fotogaleri where yazi_id=$id");
+    $data['foto']=$islem->result();
+
     $this->load->view('yazilar',$data);
+
+
+
+
      }
+
+
   public function ara($search)
   {
 
@@ -94,7 +107,8 @@ class Home extends CI_Controller {
         "kullanici"=>$this->input->post("ad"),
      		"email"=>$this->session->users['email'],
      		"metin"=>$this->input->post("mesaj"),
-     		"yazi_id"=>$data[0]->id
+     		"yazi_id"=>$data[0]->id,
+        "kul_id"=>$this->session->users['id']
 
 
 
@@ -106,15 +120,22 @@ class Home extends CI_Controller {
   		"kullanici"=>$this->input->post("ad"),
   		"email"=>$this->input->post("email"),
   		"metin"=>$this->input->post("mesaj"),
-  		"yazi_id"=>$data[0]->id
+  		"yazi_id"=>$data[0]->id,
+      "kul_id"=>null
   		);
   		$this->db->insert("yorumlar",$data);
   		redirect(base_url()."Home/yazilar/$id");
   	}
 
+
     }
 
+   public function bulunamadi()
+   {
+     $trans=$this->db->query("SELECT * FROM slider ");
+     $kaynak["slider"]=$trans->result();
 
+     $this->load->view('Sayfabulunamadi',$kaynak);
+   }
 
-
- }
+  }

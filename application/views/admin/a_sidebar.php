@@ -12,21 +12,24 @@
                         </li>
                         <li><a class="ajax-link" href="<?=base_url()?>admin/mesajlar"><i class="glyphicon glyphicon-envelope"></i><span>Mesajlar</span></a>
                         </li>
-
-                        <li><a class="ajax-link" href="<?=base_url () ?>admin/yazilar"><i class="glyphicon glyphicon-pencil"></i><span> Yazılar </span></a>
+                        <li><a class="ajax-link" href="<?=base_url()?>admin/siteicimesaj"><i class="glyphicon glyphicon-envelope"></i><span>Site İçi Mesajlaşma</span></a>
                         </li>
-                            <li><a class="ajax-link" href="<?=base_url()?>admin/Yorumlar/"><i class="	glyphicon glyphicon-comment"></i><span>Yorumlar</span></a>
 
-                        <li><a class="ajax-link" href="<?=base_url()?>admin/hakkimizda"><i class="glyphicon glyphicon-info-sign"></i><span> Hakkımızda</span></a>
+                        <li><a class="ajax-link" href="<?=base_url () ?>admin/Yazilarr"><i class="glyphicon glyphicon-pencil"></i><span> Yazılar </span></a>
+                        </li>
+                        <li><a class="ajax-link" href="<?=base_url()?>admin/Yorumlar/"><i class="	glyphicon glyphicon-comment"></i><span>Yorumlar</span></a>
+                        <li><a class="ajax-link" href="<?=base_url()?>admin/Yorumlar/sahsiyorum/<?=$this->session->users['id']?>"><i class="	glyphicon glyphicon-comment"></i><span>Şahsi Yorumlarım</span></a>
+                        <li><a class="ajax-link" href="<?=base_url()?>admin/Kategoriler"><i class="	glyphicon glyphicon-th"></i><span>Kategoriler</span></a>
+                        <li><a class="ajax-link" href="<?=base_url()?>admin/Hakkimizda"><i class="glyphicon glyphicon-info-sign"></i><span> Hakkımızda</span></a>
                         </li>
 
 
                         <li><a class="ajax-link" href="<?=base_url()?>admin/Kullanicilar"><i class="glyphicon glyphicon-user"></i><span> Kullanıcılar</span></a>
 
                         </li>
-                        <li><a class="ajax-link" href="<?=base_url()?>admin/slider"><i class="glyphicon glyphicon-picture"></i><span> Slider </span></a>
+                        <li><a class="ajax-link" href="<?=base_url()?>admin/Slider"><i class="glyphicon glyphicon-picture"></i><span> Slider </span></a>
                         </li>
-                        <li><a class="ajax-link" href="<?=base_url()?>admin/fotogaleri"><i class="glyphicon glyphicon-picture"></i><span> Foto Galeri </span></a>
+                        <li><a class="ajax-link" href="<?=base_url()?>admin/Fotogaleri"><i class="glyphicon glyphicon-picture"></i><span> Foto Galeri </span></a>
                         </li>
                         <li><a class="ajax-link" href="<?=base_url()?>admin/Home/ayarlar"><i class="glyphicon glyphicon-wrench"></i><span> Ayarlar</span></a>
                         <li><a class="ajax-link" href="<?=base_url()?>admin/Home/siteiciayarlar"><i class="	glyphicon glyphicon-pushpin"></i><span> Site İçi Ayarları</span></a>

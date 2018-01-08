@@ -32,5 +32,12 @@ class Yorumlar extends CI_Controller {
    redirect(base_url()."admin/Yorumlar");
 
  }
+ function sahsiyorum($id)
+ {
+  
+   $query=$this->db->query("SELECT * FROM yorumlar where kul_id=$id");
+   $data['veri']=$query->result();
+   $this->load->view('admin/sahsiyorum',$data);
+ }
 
 }

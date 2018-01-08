@@ -41,18 +41,27 @@ $this->load->view('admin/a_sidebar');
                 </div>
             </div>
             <div class="box-content">
-                <form role="form" action="<?=base_url()?>admin/yazilar/UpdateAdd/<?=$veri[0]->Id?>" method="post">
+                <form role="form" action="<?=base_url()?>admin/Yazilarr/UpdateAdd/<?=$veri[0]->Id?>" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Adınız Soyadınız</label>
                         <input  type="text" class="form-control" width="60"  name="adi" value="<?=$veri[0]->adi?>"  >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">E-mail</label>
+                        <input  type="text" class="form-control" value="<?=$this->session->users['email'];?>" width="60" name="mail" id="exampleInputEmail1" placeholder="Başlık">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Başlık</label>
                         <input  type="text" class="form-control" width="60" name="baslik" value="<?=$veri[0]->baslik?>" >
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Konu</label>
-                        <input  type="text" class="form-control" width="60" name="konu" id="exampleInputEmail1" placeholder="Konu">
+                        <label for="exampleInputEmail1">Kategori</label>
+                        <select width="50" name="kategori" placeholder="Kategori">
+                          <?php foreach ($veriler as $rs) { ?>
+                                <option> <?=$rs->k_adi ?> </option>
+                          <?php } ?>
+                        </select>
+
                     </div>
                     <script src="<?=base_url()?>ckeditor/ckeditor.js"></script>
                     <textarea name="yazi" id="yazi" rows="10" cols="121"><?=$veri[0]->yazi?>
@@ -61,6 +70,11 @@ $this->load->view('admin/a_sidebar');
                <script>
                   CKEDITOR.replace('yazi');
                 </script>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Keywords</label>
+                    <input  type="text" class="form-control" width="60" name="keywords" value="<?=$veri[0]->keywords?>" >
+                </div>
 
                  <br>
               <button type="submit" class="btn btn-warning">Güncelle</button>

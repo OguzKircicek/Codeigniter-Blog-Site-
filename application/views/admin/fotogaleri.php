@@ -20,7 +20,8 @@
 <strong>Transaction: </strong><?=  $this->session->flashdata("sonuc")?>
 </div>
 <?php  } ?>
-<a class="btn btn-success" href="<?=base_url()?>admin/fotogaleri/ekle"><i class="glyphicon glyphicon-picture"></i> Yeni Fotoğraf Ekle </a>
+
+
 
 
 
@@ -47,7 +48,9 @@
 
 
 
-
+               <th width="10px"></th>
+               <th></th>
+               <th>Fotoğrafın Ait Olduğu Blog Yazısı</th>
                 </tr>
                 </thead>
 
@@ -55,7 +58,16 @@
                   <tr>
                       <td><img width="200" height="200" src="<?=base_url()?>uploads/fotom/<?=$rs->yolu ?>"></td>
                       <td><?=$rs->tarih?></td>
+                <td><?php $id=$rs->yazi_id;
+                $islem=$this->db->query("SELECT * FROM yazilar WHERE Id=$id" );
+                $data['baslikcek']=$islem->result();
+                echo $data["baslikcek"][0]->baslik;
+                 ?>
 
+
+
+
+                </td>
                 <td><a href="<?=base_url()?>admin/fotogaleri/foto_sil/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-danger">
                 <span ><b>SİL</b></span></a></a></td>
                   </tr>
@@ -72,7 +84,7 @@
 <?php } else    {   ?>
      <div class="alert alert-info">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <strong>Üye olduğunuz için Sadece Yazı ekleyebilirsiniz Yazıları Görüntülüyemezsiniz!!</strong>
+              <strong>Üye olduğunuz için Bu alanı görüntüleyemezsiniz...</strong>
     </div>
 
 <?php } ?>

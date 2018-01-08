@@ -1,0 +1,53 @@
+ull {
+    list-style-type: none;
+    margin: 0;
+	
+    padding: 0;
+    overflow: hidden;
+    background-color: #111;
+}
+
+liv {
+    float: right;
+}
+
+liv a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+liv a:hover, .menu:hover {
+    background-color: #1a3680;
+}
+
+liv.menu {
+    display: inline-block;
+}
+
+.acilir-menu {
+    display: none;
+    position: absolute;
+    background-color: #111;
+    min-width: 160px; 
+}
+
+.acilir-menu a {
+    display: block;
+    text-align: left;
+}
+
+.acilir-menu a:hover {
+    color: white;
+}
+
+.menu:hover .acilir-menu {
+    display: block;
+}
+
+.aktif {
+    background-color: #1A3680;
+    color: white;
+}

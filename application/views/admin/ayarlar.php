@@ -83,11 +83,11 @@
                         </textarea></td>
 
                           <td><?=$rs->tarih?></td>
-                          <td><a href="<?=base_url()?>admin/yazilar/preview/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-success">
+                          <td><a href="<?=base_url()?>admin/Yazilarr/preview/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-success">
                       <span class="glyphicon glyphicon-check"></span></a></a></td>
-                      <td><a href="<?=base_url()?>admin/yazilar/blog_sil/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-danger">
+                      <td><a href="<?=base_url()?>admin/Yazilarr/blog_sil/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-danger">
                   <span class="glyphicon glyphicon-remove"></span></a></a></td>
-                  <td><a href="<?=base_url()?>admin/yazilar/edit/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-info" onclick="return confirm('Güncellemek İstiyor musunuz ?')">
+                  <td><a href="<?=base_url()?>admin/Yazilarr/edit/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-info" onclick="return confirm('Güncellemek İstiyor musunuz ?')">
                       <span class="glyphicon glyphicon-check"></span></a></td>
                   <?php } ?>
                     </tbody>
@@ -98,7 +98,7 @@
             </div>
         </div>
     </div>
-    
+
 
 
 <?php $this->load->view('admin/a_footer');?>

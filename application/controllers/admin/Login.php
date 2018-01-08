@@ -8,7 +8,7 @@ class Login extends CI_Controller {
 		    $this->load->helper('url');
         $this->load->database();
         $this->load->library('session');
-      
+
 
 	}
 
@@ -33,13 +33,14 @@ class Login extends CI_Controller {
       'adi'=>$result[0]->adi,
       'email' =>$result[0]->email,
       'sifre' =>$result[0]->sifre,
-      'yetki' =>$result[0]->yetki
+      'yetki' =>$result[0]->yetki,
+      'durum' =>$result[0]->durum
 
 
     );
     $this->session->set_userdata("users",$sess_array);
     //$this->session->set_userdata('info',$sess_array);
-    redirect(base_url().'admin/home');
+    redirect(base_url().'Home');
     }
     else
     {

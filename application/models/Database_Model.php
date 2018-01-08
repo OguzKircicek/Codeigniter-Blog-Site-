@@ -118,4 +118,52 @@ class Database_Model extends CI_Model {
     return $result;
 
   }
+  public function kategorisil($id)
+  {
+    $result=$this->db->delete('kategoriler',array('Id'=>$id));
+    return $result;
+
+  }
+  function kategorilistele($id)
+	{
+		$result=$this->db->select('*')
+		->from('yazilar')
+		->where('kategori',$id)
+		->get()
+		->result();
+		if(count($result)!= 1)
+		{
+			return false;
+		}else
+		{
+			return $result;
+		}
+	}
+  public function sifre_getir($tablo,$email)
+	{
+		$this->db->select("*");
+		$this->db->from($tablo);
+		$this->db->where('email',$email);
+		$this->db->limit(1);
+		$query=$this->db->get();
+
+		if($query->num_rows()==1)
+			return $query->result();
+		else
+			return false;
+	}
+  public function mesjmail($tablo,$email)
+	{
+		$this->db->select("*");
+		$this->db->from($tablo);
+		$this->db->where('mesajmail',$email);
+		$this->db->limit(1);
+		$query=$this->db->get();
+
+		if($query->num_rows()==1)
+			return $query->result();
+		else
+			return false;
+	}
+
 }

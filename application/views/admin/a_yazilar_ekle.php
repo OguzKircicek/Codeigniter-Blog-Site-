@@ -41,18 +41,27 @@ $this->load->view('admin/a_sidebar');
                 </div>
             </div>
             <div class="box-content">
-                <form role="form" method="post" action="<?=base_url()?>admin/yazilar/Addsave">
+                  <form role="form" method="post" action="<?=base_url()?>admin/Yazilarr/Addsave">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Adınız Soyadınız</label>
                         <input  type="text" class="form-control" value="<?=$this->session->users['adi'];?>" width="60" name="adi" id="exampleInputEmail1" placeholder="Ad Soyad">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">E-mail</label>
+                        <input  type="text" class="form-control" value="<?=$this->session->users['email'];?>" width="60" name="mail" id="exampleInputEmail1" placeholder="Başlık">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Başlık</label>
                         <input  type="text" class="form-control" width="60" name="baslik" id="exampleInputEmail1" placeholder="Başlık">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Konu</label>
-                        <input  type="text" class="form-control" width="60" name="konu" id="exampleInputEmail1" placeholder="Konu">
+                              <label for="exampleInputEmail1">Kategori</label>
+                        <select width="50" name="kategori" placeholder="Kategori">
+                          <?php foreach ($veri as $rs) { ?>
+                                <option> <?=$rs->k_adi ?> </option>
+                          <?php } ?>
+                        </select>
+
                     </div>
 
                     <script src="<?=base_url()?>ckeditor/ckeditor.js"></script>
@@ -62,7 +71,10 @@ $this->load->view('admin/a_sidebar');
                <script>
                   CKEDITOR.replace('yazi');
                 </script>
-
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Anahtar Kelimeler</label>
+                    <input  type="text" class="form-control" width="60" name="keywords" id="exampleInputEmail1" placeholder="Keywords">
+                </div>
                  <br>
                     <button type="submit" class="btn btn-success">Yazı Ekle</button>
                 </form>

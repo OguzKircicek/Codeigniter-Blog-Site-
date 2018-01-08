@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class hakkimizda extends CI_Controller {
+class Hakkimizda extends CI_Controller {
     public function __construct ()
 	{
 		parent::__construct();
@@ -15,11 +15,18 @@ class hakkimizda extends CI_Controller {
   public function index()
 
      { $id=1;
+
        $transaction=$this->db->query("SELECT * FROM hakkimda WHERE id=$id" );
        $data['veri']=$transaction->result();
        $data['veri'][0]->baslik = "Hakkımızda";
+
+       $islem=$this->db->query("SELECT * FROM kategoriler");
+       $data["kategori"]=$islem->result();
+       $sorgu=$this->db->query("SELECT * FROM siteayarlari");
+       $data["etiket"]=$sorgu->result();
+
        $this->load->view('hakkimizda',$data);
 
-       
+
      }
 }

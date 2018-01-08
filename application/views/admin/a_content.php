@@ -27,7 +27,7 @@
 
         </a>
     </div>
-
+<?php if($this->session->users['yetki']=='Admin') { ?>
     <div class="col-md-3 col-sm-3 col-xs-6">
         <a data-toggle="tooltip" title="4 new pro members." class="well top-block" href="<?=base_url()?>admin/Kullanicilar/adminler">
             <i class="glyphicon glyphicon-star green"></i>
@@ -51,7 +51,7 @@
     </div>
 
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip"  class="well top-block" href="<?=base_url()?>admin/yazilar/onay">
+        <a data-toggle="tooltip"  class="well top-block" href="<?=base_url()?>admin/yazi">
             <i class="glyphicon glyphicon-envelope red"></i>
 
             <div>Onay Bekleyen Yazılar</div>
@@ -60,7 +60,8 @@
         </a>
     </div>
 </div>
-
+<?php }
+else { ?> <br> <br> <br> <br> <br> <?php } ?>
 
             <div class="box-content row">
               <h4><b><i class="glyphicon glyphicon-pencil"></i> Paylaştığım Yazılar</b></h4>

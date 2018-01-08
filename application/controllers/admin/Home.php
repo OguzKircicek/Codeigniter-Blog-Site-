@@ -71,6 +71,7 @@ class Home extends CI_Controller {
  {
    $site=$this->db->query("SELECT * FROM siteayarlari limit 1 ");
    $data["siteici"]=$site->result();
+
    $this->load->view('admin/siteiciayarlar',$data);
  }
  public function siteiciayarguncelle($id)
@@ -81,10 +82,21 @@ class Home extends CI_Controller {
    'keywords'=>$this->input->post('keywords'),
    'aciklama'=>$this->input->post('aciklama'),
    'name'=>$this->input->post("name"),
+   'smtpport'=>$this->input->post("smtpport"),
+   'smtphost'=>$this->input->post("smtphost"),
+   'mail'=>$this->input->post("mail"),
+   'subject'=>$this->input->post("subject"),
+   'message'=>$this->input->post("message"),
+   'sifre'=>$this->input->post("sifre")
+
 
    );
   $this->session->set_flashdata("sonuc","Successfully User Updated");
   $this->Database_Model->update_data("siteayarlari",$data,$id);
   redirect(base_url().'admin/Home/siteiciayarlar');
  }
+
+
+
+
 }

@@ -28,9 +28,17 @@
   <button type="button" class="close" data-dismiss="alert">×</button>
   <strong>Transaction: </strong><?=  $this->session->flashdata("sonuc")?>
 </div>
-<?php  } ?>
-<a class="btn btn-success" href="<?=base_url()?>admin/yazilar/ekle"><i class="glyphicon glyphicon-pencil"></i> Yeni Yazı Ekle </a>
+<?php  }
+ if($this->session->users['durum']=='Aktif')  { ?>
 
+<a class="btn btn-success" href="<?=base_url()?>admin/Yazilarr/ekle"><i class="glyphicon glyphicon-pencil"></i> Yeni Yazı Ekle </a>
+<?php }  else  { ?>
+  <div class="alert alert-danger">
+             <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <strong>Yönetici Tarafından Durumunuz Aktif yapıldıktan sonra Yazi Ekleyebileceksiniz </strong>
+ </div>
+
+<?php }?>
 
 
 <?php if($this->session->users['yetki']=='Admin') { ?>
@@ -38,7 +46,7 @@
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well" data-original-title="">
-                <h2><i class="glyphicon glyphicon-user"></i> Yazılar</h2>
+                <h2><i class="glyphicon glyphicon-pencil"></i> Yazılar</h2>
 
                 <div class="box-icon">
                     <a href="#" class="btn btn-minimize btn-round btn-default"><i
@@ -54,6 +62,7 @@
                         <th width="200px">Username</th>
                         <th width="200px">Başlık</th>
                         <th width="400px">İçerik</th>
+                        <th width="400px">Kategori</th>
                         <th width="150px">Tarih</th>
                         <th witdh="10px">Göster</th>
                         <th width="10px">Silme</th>
@@ -76,13 +85,13 @@
                           </textarea></td>
                         <td>  <textarea rows="2" cols="30" readonly ><?=$rs->yazi?>
                         </textarea></td>
-
+                          <td><?=$rs->kategori?></td>
                           <td><?=$rs->tarih?></td>
-                          <td><a href="<?=base_url()?>admin/yazilar/preview/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-success">
+                          <td><a href="<?=base_url()?>admin/Yazilarr/preview/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-success">
 											<span class="glyphicon glyphicon-check"></span></a></a></td>
-                      <td><a href="<?=base_url()?>admin/yazilar/blog_sil/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-danger">
+                      <td><a href="<?=base_url()?>admin/Yazilarr/blog_sil/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-danger">
                   <span class="glyphicon glyphicon-remove"></span></a></a></td>
-                  <td><a href="<?=base_url()?>admin/yazilar/edit/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-info" onclick="return confirm('Güncellemek İstiyor musunuz ?')">
+                  <td><a href="<?=base_url()?>admin/Yazilarr/edit/<?=$rs->Id?>" style="margin-top:8px" class="btn btn-info" onclick="return confirm('Güncellemek İstiyor musunuz ?')">
 											<span class="glyphicon glyphicon-check"></span></a></td>
                   <?php } ?>
                     </tbody>
@@ -103,9 +112,6 @@
         </div>
 
 <?php } ?>
-<div class="pagination">
-   <?= $linkler ?>
-</div>
 
 
 

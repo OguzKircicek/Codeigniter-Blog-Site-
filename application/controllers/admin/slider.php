@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class slider extends CI_Controller {
+class Slider extends CI_Controller {
     public function __construct ()
 	{
 		parent::__construct();
@@ -55,7 +55,12 @@ class slider extends CI_Controller {
   $this->session->set_flashdata("sonuc","Successfully Saved");
 
     $data=array('yolu'=>$id.".jpg",
-                'tarih'=>date('y-m-d'));
+                'tarih'=>date('y-m-d'),
+                'baslik'=>$this->input->post('adi'),
+                'keywords'=>$this->input->post('keywords'),
+                'kategori'=>$this->input->post('description'),
+                'bilgi'=>$this->input->post('bilgi')
+              );
    $this->Database_Model->insert_data("slider",$data);
 
   //$this->db->insert("users",$data);

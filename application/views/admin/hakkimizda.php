@@ -16,15 +16,16 @@
       <b>  <a href="<?=base_url()?>admin/Home">Home</a></b>
     </li>
     <li>
-    <b>  <a href="<?=base_url()?>admin/hakkimizda">Hakkımızda</a><b>
+    <b>  <a href="<?=base_url()?>admin/Hakkimizda">Hakkımızda</a><b>
 
     </li>
 
-<?php if($this->session->users['yetki']=='Admin') { ?>
+
   </ul></div>
+  <?php if($this->session->users['yetki']=='Admin') { ?>
 <div class="box col-md-9">
 
-    <form role="form" action="<?=base_url()?>admin/hakkimizda/guncelle/<?=$veri[0]->Id?>" method="post">
+    <form role="form" action="<?=base_url()?>admin/Hakkimizda/guncelle/<?=$veri[0]->Id?>" method="post">
 
         <script src="<?=base_url()?>ckeditor/ckeditor.js"></script>
         <textarea name="aciklama"  rows="4" cols="11"><?=$veri[0]->icerik?>

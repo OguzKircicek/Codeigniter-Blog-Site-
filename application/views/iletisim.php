@@ -7,6 +7,16 @@ $kaynak['etiket']=$query->result();
 $this->load->view('_header',$kaynak); ?>
 
     <!-- Main Content -->
+
+    <div class="col-lg-2">
+      <h3 align="center">Kategoriler </h3>
+     <ul class="list-group">
+    <?php foreach ($kategori as $rs) {?>
+    <li  class="list-group-item" > <a href="<?=base_url()?>Kategoriler/listele/<?=$rs->Id?>">  <?= $rs->k_adi ?><br> </span></a> </li>
+    <?php } ?>
+    </ul>
+    </div>
+
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">

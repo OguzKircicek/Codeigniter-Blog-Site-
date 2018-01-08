@@ -92,7 +92,7 @@ class yazilar extends CI_Controller {
      'adi'=>$this->input->post('adi'),
      'baslik'=>$this->input->post('baslik'),
      'yazi'=>$this->input->post('yazi'),
-     'konu'=>$this->input->post('konu'),
+     'kategori'=>$this->input->post('kategori'),
      'tarih'=>date("y-m-d")
    );
   $this->session->set_flashdata("sonuc","Successfully User Updated");
@@ -104,7 +104,17 @@ class yazilar extends CI_Controller {
 
   public function ekle()
   {
-   $this->load->view('admin/a_yazilar_ekle');
+   $transaction=$this->db->query("SELECT * FROM kategoriler");
+   $data["veri"]=$transaction->result();
+   $this->load->view("admin/a_yazilar_ekle",$data);
+  }
+  public function onay()
+  {
+    $query=$this->db->query("SELECT * FROM yazilar where onay=0");
+    $data["onay"]=$query->result();
+
+     $this->load->view('admin/onay',$data);
+
   }
 
   public function Addsave()
@@ -114,7 +124,7 @@ class yazilar extends CI_Controller {
    'adi'=>$this->input->post('adi'),
    'baslik'=>$this->input->post('baslik'),
    'yazi'=>$this->input->post('yazi'),
-   'konu'=>$this->input->post('konu'),
+   'kategori'=>$this->input->post('kategori'),
 
    'tarih'=>date("y-m-d")
    );
@@ -136,14 +146,7 @@ class yazilar extends CI_Controller {
       $this->db->query("DELETE FROM yazilar WHERE Id=".$id);
       redirect(base_url().'admin/yazilar');
   }
-  public function onay()
-  {
-    $query=$this->db->query("SELECT * FROM yazilar");
-		$data["onay"]=$query->result();
 
-     $this->load->view('admin/onay',$data);
-
-  }
 
   	public function onayy_ret($id)
   	{

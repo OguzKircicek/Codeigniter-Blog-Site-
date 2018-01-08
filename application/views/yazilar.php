@@ -5,10 +5,20 @@ $kaynak['etiket']=$query->result();
 
 
 $this->load->view('_header',$kaynak); ?>
-    <article>
+
+<div class="col-lg-2">
+  <h3 align="center">Kategoriler </h3>
+ <ul class="list-group">
+<?php foreach ($a as $rs) {?>
+<li  class="list-group-item" > <a href="<?=base_url()?>Kategoriler/listele/<?=$rs->Id?>">  <?= $rs->k_adi ?><br> </span></a> </li>
+<?php } ?>
+</ul>
+</div>
+
+
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="col-md-9">
             <h3> <?php echo $veri[0]->baslik; ?></h3>
             <?php echo $veri[0]->yazi; ?>
             <!-- AddThis Button BEGIN -->
@@ -22,10 +32,46 @@ $this->load->view('_header',$kaynak); ?>
             <a class="addthis_counter addthis_bubble_style"></a>
             </div>
             <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4fe1c6bb3c70d8cf"></script>
-            <br>
+            <?php if($this->session->users) { ?>
+             <a class="btn btn-success" href="<?=base_url()?>Fotolar/ekle/<?=$veri[0]->Id?>"><i class="glyphicon glyphicon-pencil"></i> Yeni Foto Ekle </a>
+           <?php } ?>
+
+
+            <h2>Yazının Galerisi</h2>
+
+    <div  class="container gallery-container">
+          <div  class="tz-gallery">
+
+              <div class="row">
+                <?php foreach($foto as $rs) {
+                      if($rs->yazi_id==$veri[0]->Id)
+                      {
+                   ?>
+                  <div class="col-sm-1 col-md-2" style="margin:5px;">
+                      <div class="thumbnail" >
+                          <a class="lightbox" href="<?=base_url()?>uploads/fotom/<?=$rs->yolu?>">
+                                <img src="<?=base_url()?>uploads/fotom/<?=$rs->yolu?>"  style="height:150px; width:180px ">
+                          </a>
+                      </div>
+                  </div>
+                <?php } }?>
+              </div>
+          </div>
+      </div>
+
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+                  <script>
+                      baguetteBox.run('.tz-gallery');
+                  </script>
+
+
+
+
+
+
+
 
             <h2 ><span class="btn btn-danger">Yorumlar</span></h2>
-
             <?php    $i=0; foreach($yorum as $rs) { if(($rs->yazi_id)==$veri[0]->Id) { $i++;  ?>
       <fieldset>
       <div class="well well-lg">
@@ -44,6 +90,8 @@ $this->load->view('_header',$kaynak); ?>
 
           } ?>
           <?php
+
+
             if($i==0) {
           ?>
               <h2>Bu Yazı İçin Henüz Yorum Yapılmadı </h2>
@@ -90,7 +138,6 @@ $this->load->view('_header',$kaynak); ?>
           </div>
         </div>
       </div>
-    </article>
 
 
 

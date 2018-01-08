@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class fotogaleri extends CI_Controller {
+class Fotogaleri extends CI_Controller {
     public function __construct ()
 	{
 		parent::__construct();
@@ -28,7 +28,7 @@ class fotogaleri extends CI_Controller {
 	}
   public function foto_sil($id){
       $this->db->query("DELETE FROM fotogaleri WHERE Id=".$id);
-      redirect(base_url().'admin/fotogaleri');
+      redirect(base_url().'admin/Fotogaleri');
   }
   public function ekle()
   {
@@ -59,8 +59,9 @@ class fotogaleri extends CI_Controller {
 		$this->Database_Model->insert_data("fotogaleri",$data);
 
   //$this->db->insert("users",$data);
-  redirect(base_url().'admin/fotogaleri');
+  redirect(base_url().'admin/Fotogaleri');
   }
+
 
 
 }

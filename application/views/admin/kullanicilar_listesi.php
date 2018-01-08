@@ -33,9 +33,9 @@
 <a class="btn btn-success" href="<?=base_url()?>admin/Kullanicilar/ekle"><i class="glyphicon glyphicon-user"></i> Yeni Kullanıcı Ekle </a>
 
 <div class="row">
-    <div class="col-md-10 ">
+    <div class="col-md-9 ">
         <div class="box-inner">
-            <div class="box-header well">
+         <div class="box-header well" data-original-title="">
                 <h2><i class="glyphicon glyphicon-info-sign"></i> Kullanıcılar</h2>
 
 

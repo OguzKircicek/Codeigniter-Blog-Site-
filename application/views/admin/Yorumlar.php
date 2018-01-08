@@ -12,7 +12,7 @@
     <?php  } ?>
               <div class="panel panel-default">
                   <div class="panel-heading">
-                  Gelen Mesajlar
+                  Yorumlar  
                   </div>
                 <?php if($this->session->users['yetki']=='Admin') { ?>
                   <div class="panel-body">

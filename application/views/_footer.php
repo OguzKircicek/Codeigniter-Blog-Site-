@@ -29,7 +29,7 @@
                 </a>
               </li>
             </ul>
-
+            
             <p class="copyright text-muted">Copyright &copy; 2017</p>
           </div>
         </div>
